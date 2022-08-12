@@ -2,6 +2,7 @@ package hello.SpringCore;
 
 import hello.SpringCore.discount.DiscountPolicy;
 import hello.SpringCore.discount.FixDiscountPolicy;
+import hello.SpringCore.discount.RateDiscountPolicy;
 import hello.SpringCore.member.MemberService;
 import hello.SpringCore.member.MemberServiceImpl;
 import hello.SpringCore.member.MemoryMemberRepository;
@@ -23,6 +24,7 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy(){
-        return new FixDiscountPolicy();
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
