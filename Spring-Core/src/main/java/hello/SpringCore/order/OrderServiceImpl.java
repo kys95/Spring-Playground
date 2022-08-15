@@ -12,13 +12,23 @@ import org.springframework.stereotype.Component;
 public class OrderServiceImpl implements OrderService{
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository(); //DIP 위반
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //DIP 위반(인터페이스에만 의존해야하는 것을 위반) : 인터페이스 뿐 아니라 구체 클래스도 함께 의존하므로
-    private final DiscountPolicy discountPolicy;  //DIP 지킴
+    private DiscountPolicy discountPolicy;  //DIP 지킴
 
-    @Autowired
+    @Autowired //생성자 1개면 생략 가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy){
         this.discountPolicy = discountPolicy;
     }
 
