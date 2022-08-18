@@ -1,10 +1,12 @@
 package hello.SpringCore.discount;
 
+import hello.SpringCore.annotation.MainDiscountPolicy;
 import hello.SpringCore.member.Grade;
 import hello.SpringCore.member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private int discountPercent = 10; //10% 할인
